@@ -1,0 +1,19 @@
+language: ruby
+
+env:
+  global:
+    - secure: >-
+      BKcYR9tpZ+FgkE1/Qa1bcgOG2WtUxCpCobA6C/P48Bxkm/MXJdl1xZ2LPPgvbc1/+se2Ff6AJTzyqrqo41LB4oqk4Fipj73KVzd74QlcZaI+0kA1CyrSA0pyqI8ee3uTZIX6f/ONX6LsoeMm+YElwqRJRllRYOEewipTvFmWA6BoX+th1li7YXNb+nOT8VRYglonL/DZFpZhISeaFcRRmSY7HcTjSZWseM6TQMNYFXqbl4Dv4T1RTzMH5KvMO/3gHvJoND2FG8ZsIcG07whAe4EUKohCOXp/SpXQbqiIQGKvLaUNLEB4SSf01t7HWBxGx4qh4rTN431M97ZMe1tvDQ==
+
+build:
+  cache: true
+  post_ci:
+    - docker build -t sensor-logger .
+    - docker tag sensor-logger:latest $ECR_URL_ID.dkr.ecr.us-east-2.amazonaws.com/sensor-logger:latest
+    - docker push $ECR_URL_ID.dkr.ecr.us-east-2.amazonaws.com/sensor-logger:latest
+
+integrations:
+  hub:
+    - integrationName: ecr-user-personal
+    region: us-east-2
+    type: ecr
