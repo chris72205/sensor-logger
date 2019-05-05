@@ -15,5 +15,5 @@ build:
 integrations:
   hub:
     - integrationName: ecr-user-personal
-    region: us-east-2
-    type: ecr
+      region: us-east-2
+      type: ecr
