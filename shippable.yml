@@ -1,4 +1,6 @@
 language: ruby
+rvm:
+  - 2.5
 
 env:
   global:
@@ -7,6 +9,8 @@ env:
 
 build:
   cache: true
+  ci:
+    - echo 'Nothing to build here...'
   post_ci:
     - docker build -t sensor-logger .
     - docker tag sensor-logger:latest $ECR_URL_ID.dkr.ecr.us-east-2.amazonaws.com/sensor-logger:latest
