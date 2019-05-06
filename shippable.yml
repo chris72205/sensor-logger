@@ -12,7 +12,6 @@ build:
   ci:
     - echo 'Nothing to build here...'
   post_ci:
-    - docker run --rm --privileged multiarch/qemu-user-static:register --reset
     - docker build -t sensor-logger .
     - docker tag sensor-logger:latest $ECR_URL_ID.dkr.ecr.us-east-2.amazonaws.com/sensor-logger:latest
     - docker push $ECR_URL_ID.dkr.ecr.us-east-2.amazonaws.com/sensor-logger:latest

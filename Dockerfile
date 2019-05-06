@@ -1,5 +1,3 @@
-FROM resin/rpi-raspbian
-
 FROM ruby:2.5
 
 RUN bundle config --global frozen 1
