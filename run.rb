@@ -11,7 +11,7 @@ PG_PASS = ENV['PG_PASS']
 
 # Create table if not exists
 pg_conn = PG.connect(host: PG_HOST, port: PG_PORT, dbname: PG_DB, user: PG_USER, password: PG_PASS)
-pg_conn.exec("CREATE TABLE IF NOT EXISTS sensor_readings (id int PRIMARY_KEY, source text, temperature float, humidity float, timestamp DATETIME)")
+# pg_conn.exec("CREATE TABLE IF NOT EXISTS sensor_readings (id int PRIMARY_KEY, source text, temperature float, humidity float, timestamp DATETIME)")
 
 # Output data and then insert into database
 def log_data pg_conn, source, temperature, humidity
