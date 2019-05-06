@@ -26,7 +26,7 @@ AMQP_USER = ENV['AMQP_USER']
 AMQP_PASS = ENV['AMQP_PASS']
 
 # Connect to rabbitmq
-conn = Bunny.new host: AMQP_HOST, vhost: AMQP_VHOST
+conn = Bunny.new host: AMQP_HOST, user: AMQP_USER, pass: AMQP_PASS, vhost: AMQP_VHOST
 conn.start
 
 # Declare channel, exchange, queue
